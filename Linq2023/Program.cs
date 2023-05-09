@@ -12,16 +12,31 @@ namespace Linq2023
         {
             int[] numbers = new int[7] { 0, 1, 2, 3, 4, 5, 6 };
 
-            var pares = (from c in numbers
-                        where c % 2 == 0
-                        select c).ToList();
+            ShowPares(numbers);
+            ShowParesLambda(numbers);
 
-            
-            foreach (var par in pares) { Console.Write(par); }
-            
-            
             Console.ReadLine();
 
         }
+
+        private static void ShowPares(int[] numbers)
+        {
+            Console.WriteLine("ShowPares");
+            var pares = (from c in numbers
+                         where c % 2 == 0
+                         select c).ToList();
+
+
+            foreach (var par in pares) { Console.WriteLine(par); }
+        }
+        private static void ShowParesLambda(int[] numbers)
+        {
+            Console.WriteLine("ShowParesLambda");
+            var pares =  numbers.Where(x=>x%2==0).ToList();
+            foreach (var par in pares) { Console.WriteLine(par); }
+        }
+
+
+
     }
 }
