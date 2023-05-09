@@ -18,6 +18,21 @@ namespace Linq2023
             InsertProducts();
             var productsExpensive = products.Where(x => x.Price > 50).ToList();
 
+            
+            //Tipado débil
+            var productsNew = products.Where(x => x.Price < 50 && x.Name.Contains("m"))
+                                      .Select(x => new {
+                                       Nombre=x.Name,
+                                       PrecioIGV=x.Price*1.18                                      
+                                      }).ToList();
+
+            foreach (var item in productsNew)
+            {
+                Console.Write(item.Nombre);
+                Console.Write(item.PrecioIGV);
+                Console.WriteLine();
+            }
+            //Un listado de productos precio <50 y contenga la letra m el nombre
 
             Console.ReadLine();
 
